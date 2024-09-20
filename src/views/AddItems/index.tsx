@@ -1,27 +1,27 @@
-import FormInput from "../../components/base/FormInput";
-import FormButton from "../../components/base/FormButton";
+import InputForm from "../../components/custom/InputForm";
 import List from "../../components/custom/List";
+
+interface Item {
+  item: string;
+  marked: boolean;
+}
 
 interface AddItem {
   onSubmitHandaler: (e: React.FormEvent<HTMLFormElement>) => void;
   onClick: (item?: string) => void;
-  items: string[];
+  isMarked: (item?: string) => void;
+  items: Item[];
 }
 
-const AddItems = ({ onSubmitHandaler, items, onClick }: AddItem) => {
+const AddItems = ({ onSubmitHandaler, items, onClick, isMarked }: AddItem) => {
   return (
     <>
       <div className="w-full flex mt-20 justify-center">
-        <form onSubmit={onSubmitHandaler} className="gap-5 flex">
-          <FormInput name="addbox" placeholder="Enter the task..." />
-          <FormButton type="submit" variant="submit">
-            Add
-          </FormButton>
-        </form>
+        <InputForm onSubmitHandaler={onSubmitHandaler} />
       </div>
       <div className="w-full flex flex-col mt-20 justify-center items-center gap-5">
         {items.map((item, index) => (
-          <List key={index} item={item} onClick={onClick} />
+          <List key={index} item={item} onClick={onClick} isMarked={isMarked} />
         ))}
       </div>
     </>

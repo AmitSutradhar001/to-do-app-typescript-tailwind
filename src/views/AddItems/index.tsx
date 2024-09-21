@@ -16,13 +16,22 @@ interface AddItem {
 const AddItems = ({ onSubmitHandaler, items, onClick, isMarked }: AddItem) => {
   return (
     <>
-      <div className="w-full flex mt-20 justify-center">
-        <InputForm onSubmitHandaler={onSubmitHandaler} />
-      </div>
-      <div className="w-full flex flex-col mt-20 justify-center items-center gap-5">
-        {items.map((item, index) => (
-          <List key={index} item={item} onClick={onClick} isMarked={isMarked} />
-        ))}
+      <div className="flex flex-col h-screen w-full items-center justify-start">
+        <div className="flex flex-col p-3 mt-10 rounded-lg shadow-2xl border-t-4 border-orange-300">
+          <div className="w-full flex mt-20 justify-center">
+            <InputForm onSubmitHandaler={onSubmitHandaler} />
+          </div>
+          <div className="w-full flex flex-col mt-20 justify-center items-center gap-5">
+            {items.map((item, index) => (
+              <List
+                key={index}
+                item={item}
+                onClick={onClick}
+                isMarked={isMarked}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );

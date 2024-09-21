@@ -11,20 +11,23 @@ interface List {
 
 const List = ({ onClick, item, isMarked }: List) => {
   return (
-    <div className="w-96 overflow-hidden flex justify-between items-center border-2 rounded-lg bg-teal-100">
-      <input
-        type="checkbox"
-        defaultChecked={item?.marked}
-        className="peer mr-2 cursor-pointer"
-        onClick={() => isMarked?.(item?.item)}
-      />
-      <p
-        className={`overflow-hidden px-2 py-1 font-semibold ${
-          item?.marked ? "line-through" : ""
-        }`}
-      >
-        {item?.item}
-      </p>
+    <div className="w-96 px-2 py-1 overflow-hidden flex justify-between items-center border-[1px] border-blue-500 rounded-lg bg-teal-50">
+      <div className="flex gap-2 justify-start items-center">
+        <input
+          type="checkbox"
+          checked={item?.marked}
+          className="peer cursor-pointer"
+          onClick={() => isMarked?.(item?.item)}
+        />
+        <p
+          className={`overflow-x-auto text-gray-500 w-64 px-2 py-1 font-semibold ${
+            item?.marked ? "line-through" : ""
+          }`}
+        >
+          {item?.item}
+        </p>
+      </div>
+
       <p
         onClick={() => onClick?.(item?.item)}
         className="cursor-pointer text-red-500"

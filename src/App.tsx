@@ -1,10 +1,10 @@
-import TaskAndList from "./container/TaskAndList";
+import Root from "./router/Root";
 
 const App = () => {
   return (
-    <div>
-      <TaskAndList />
-    </div>
+    <>
+      <Root />
+    </>
   );
 };
 
